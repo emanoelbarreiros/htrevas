@@ -9,7 +9,6 @@ import Text.Printf
 import Sprite
 
 
-
 canhaoSprite = [[0,0,0,0,0,0,0,2,2,1,2,2,0,0,0,0,0,0,0]
                ,[0,0,0,0,0,0,2,2,0,1,0,2,2,0,0,0,0,0,0]
                ,[0,0,0,0,0,2,2,0,0,1,0,0,2,2,0,0,0,0,0]
@@ -64,4 +63,4 @@ desenhaMoldura _ = translate 0 (-350) $ rectangleThick magenta (tamSegmt * 2) 80
 
 
 desenhaCanhao :: Mundo -> Picture 
-desenhaCanhao m = (uncurry translate (canhao m)) $ desenhaSprite tamSegmtCanhao canhaoSprite
+desenhaCanhao m = uncurry translate (canhao m) $ desenhaSprite True tamSegmtCanhao canhaoSprite

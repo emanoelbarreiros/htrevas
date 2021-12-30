@@ -88,16 +88,16 @@ char9 = [[0,1,1,1,1,1,0]
 
 caractere :: Char -> Picture
 caractere c = case c of
-    '0' -> desenhaSprite tamSegmt char0
-    '1' -> desenhaSprite tamSegmt char1
-    '2' -> desenhaSprite tamSegmt char2
-    '3' -> desenhaSprite tamSegmt char3
-    '4' -> desenhaSprite tamSegmt char4
-    '5' -> desenhaSprite tamSegmt char5
-    '6' -> desenhaSprite tamSegmt char6
-    '7' -> desenhaSprite tamSegmt char7
-    '8' -> desenhaSprite tamSegmt char8
-    '9' -> desenhaSprite tamSegmt char9
+    '0' -> desenhaSprite False tamSegmt char0
+    '1' -> desenhaSprite False tamSegmt char1
+    '2' -> desenhaSprite False tamSegmt char2
+    '3' -> desenhaSprite False tamSegmt char3
+    '4' -> desenhaSprite False tamSegmt char4
+    '5' -> desenhaSprite False tamSegmt char5
+    '6' -> desenhaSprite False tamSegmt char6
+    '7' -> desenhaSprite False tamSegmt char7
+    '8' -> desenhaSprite False tamSegmt char8
+    '9' -> desenhaSprite False tamSegmt char9
     _   -> blank
 
 
