@@ -29,15 +29,15 @@ Parado   <+> tup   = tup
 
 possiveisDirecoes :: Direcao -> [Direcao]
 possiveisDirecoes d = case d of
-                      Norte -> [Norte, Noroeste, Nordeste]
-                      Sul -> [Sul, Sudoeste, Sudeste]
-                      Leste -> [Sudeste, Leste, Nordeste]
-                      Oeste -> [Oeste, Sudoeste, Noroeste]
-                      Sudeste -> [Sudeste, Sul, Leste]
+                      Norte    -> [Norte, Noroeste, Nordeste]
+                      Sul      -> [Sul, Sudoeste, Sudeste]
+                      Leste    -> [Sudeste, Leste, Nordeste]
+                      Oeste    -> [Oeste, Sudoeste, Noroeste]
+                      Sudeste  -> [Sudeste, Sul, Leste]
                       Nordeste -> [Nordeste, Leste, Norte]
                       Noroeste -> [Noroeste, Norte, Oeste]
                       Sudoeste -> [Sudoeste, Oeste, Sul]
-                      Parado -> [Parado]
+                      Parado   -> [Parado]
 
 
 naveSprite :: Sprite
@@ -61,13 +61,13 @@ atualizarNave (Nav pos dir fra rand ordens)
         (novaDir, novoRand, novasOrdens) = if not (null ordens) then (head ordens, rand, tail ordens) else novaDirecao dir rand |> []
 
 
-
 novaDirecao :: Direcao -> StdGen -> (Direcao, StdGen)
 novaDirecao dir rand = (novaDir, novoRand)
                     where
                         direcoes = possiveisDirecoes dir
                         (indice, novoRand) = randomR (0 :: Int, length direcoes - 1) rand
                         novaDir = direcoes !! indice
+
 
 atualizarNaves :: [Nave] -> [Nave]
 atualizarNaves = map atualizarNave
