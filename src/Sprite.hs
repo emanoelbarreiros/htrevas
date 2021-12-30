@@ -3,9 +3,21 @@ module Sprite where
 import Graphics.Gloss
 import Lib
 
+type Sprite = [[Int]]
+
+tamSegmtGrd :: Num a => a
+tamSegmtGrd =  8
+
+
+tamSegmtPeq :: Num a => a
+tamSegmtPeq = 4
+
+tamSegmtMed :: Num a => a
+tamSegmtMed = 6
+
 
 cor :: [Color]
-cor = [black, white, green, greyN 0.5, magenta, blue, red]
+cor = [black, white, green, greyN 0.5, magenta, blue, red, cyan, yellow]
 
 
 desenhaSegmento :: Bool -> Float -> (Float, Picture) -> Int -> (Float, Picture)

@@ -88,16 +88,16 @@ char9 = [[0,1,1,1,1,1,0]
 
 caractere :: Char -> Picture
 caractere c = case c of
-    '0' -> desenhaSprite False tamSegmt char0
-    '1' -> desenhaSprite False tamSegmt char1
-    '2' -> desenhaSprite False tamSegmt char2
-    '3' -> desenhaSprite False tamSegmt char3
-    '4' -> desenhaSprite False tamSegmt char4
-    '5' -> desenhaSprite False tamSegmt char5
-    '6' -> desenhaSprite False tamSegmt char6
-    '7' -> desenhaSprite False tamSegmt char7
-    '8' -> desenhaSprite False tamSegmt char8
-    '9' -> desenhaSprite False tamSegmt char9
+    '0' -> desenhaSprite False tamSegmtGrd char0
+    '1' -> desenhaSprite False tamSegmtGrd char1
+    '2' -> desenhaSprite False tamSegmtGrd char2
+    '3' -> desenhaSprite False tamSegmtGrd char3
+    '4' -> desenhaSprite False tamSegmtGrd char4
+    '5' -> desenhaSprite False tamSegmtGrd char5
+    '6' -> desenhaSprite False tamSegmtGrd char6
+    '7' -> desenhaSprite False tamSegmtGrd char7
+    '8' -> desenhaSprite False tamSegmtGrd char8
+    '9' -> desenhaSprite False tamSegmtGrd char9
     _   -> blank
 
 
@@ -106,7 +106,7 @@ texto s = snd $ foldl desenhaTexto (0, blank) (map caractere s)
 
 
 desenhaTexto :: (Float, Picture) -> Picture -> (Float, Picture)
-desenhaTexto (off, c) p = (off + 7*tamSegmt + (tamSegmt / 2), pictures [c, shiftDireita off p])
+desenhaTexto (off, c) p = (off + 7*tamSegmtGrd + (tamSegmtGrd / 2), pictures [c, shiftDireita off p])
 
 
 shiftDireita :: Float -> Picture -> Picture

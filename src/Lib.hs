@@ -1,51 +1,42 @@
 module Lib where
 
+import System.Random
 
+-- (x,y)
 type Pos = (Float, Float)
 
-data Direcao = Leste | Oeste | Parado deriving (Eq, Show)
+data Direcao = Norte | Sul | Leste | Oeste | Nordeste | Sudoeste | Sudeste | Noroeste | Parado deriving Eq
 
-data Modo = Inicio | Jogando | GameOver deriving (Eq, Show)
+data Modo = Inicio | Jogando | GameOver deriving Eq
+
+-- (posicao, direcao, frames para renovar direcao)
+data Nave = Nav {
+    posicao :: Pos
+  , direcaoNave :: Direcao
+  , renovarDir :: Int
+  , rand :: StdGen
+  , ordens :: [Direcao]
+} deriving Eq
+
+
+tamJanela :: Int
+tamJanela = 900
+
 
 data Mundo = Estado {
     canhao :: Pos
   , maxPontos :: Int
   , pontos :: Int
-  , direcao :: Direcao
-} deriving Show
-
-
-mundoInicial :: Mundo
-mundoInicial = Estado {
-    canhao = (0.0, -301.0)
-  , maxPontos = 99
-  , pontos = 22
-  , direcao = Parado
+  , direcaoCanhao :: Direcao
+  , naves :: [Nave]
 }
 
 
-linhas :: Num a => a
-linhas = 39
+limite :: (Float, Float) -> Float -> Float
+limite (li,ls) v
+  | v < li = li
+  | v > ls = ls
+  | otherwise = v
 
-
-limite :: (Num a, Integral a) => a
-limite = linhas `div` 2
-
-
-tamJanela :: Num a => a
-tamJanela = tamSegmt * linhas
-
-
-tamSegmt :: Num a => a
-tamSegmt =  8
-
-tamSegmtCanhao :: Num a => a
-tamSegmtCanhao = 4
-
-
-acaoFrames :: Num a => a
-acaoFrames = 10
-
-velocidade :: Float
-velocidade = 20.0
-
+(|>) :: (a,b) -> c -> (a,b,c)
+(a,b) |> c = (a,b,c)
