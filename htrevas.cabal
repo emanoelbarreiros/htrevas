@@ -47,7 +47,7 @@ executable htrevas-exe
       Paths_htrevas
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N -XDeriveGeneric -XDeriveAnyClass
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , gloss
