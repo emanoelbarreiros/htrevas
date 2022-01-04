@@ -28,8 +28,8 @@ desenhaCanhao :: Mundo -> Picture
 desenhaCanhao m = uncurry translate (canhao m) $ desenhaSprite True tamSegmtPeq canhaoSprite
 
 moverCanhao :: Mundo -> Pos
-moverCanhao (Estado (x,y) _ _ d _ ) = (limite intervaloCanhao (x+vel),y)
-                                        where vel = case d of
-                                                    Oeste -> -velocidade
-                                                    Leste -> velocidade
-                                                    _ -> 0.0
+moverCanhao (Estado (x,y) _ _ d _ _) = (limite intervaloCanhao (x+vel),y)
+                                         where vel = case d of
+                                                     Esquerda -> -velocidade
+                                                     Direita -> velocidade
+                                                     _ -> 0.0

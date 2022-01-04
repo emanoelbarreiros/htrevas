@@ -1,17 +1,21 @@
 module Lib where
 
 import System.Random
+import Data.CircularList
 
 -- (x,y)
 type Pos = (Float, Float)
 
-data Direcao = Norte | Sul | Leste | Oeste | Nordeste | Sudoeste | Sudeste | Noroeste | Parado deriving Eq
+data Direcao = Norte | Nordeste | Leste | Sudeste | Sul | Sudoeste | Oeste | Noroeste deriving (Eq, Show)
+
+data Movimento = Esquerda | Direita | Parado deriving Eq
 
 data Modo = Inicio | Jogando | GameOver deriving Eq
 
 -- (posicao, direcao, frames para renovar direcao)
 data Nave = Nav {
     posicao :: Pos
+  --, direcaoNave :: CList Direcao
   , direcaoNave :: Direcao
   , renovarDir :: Int
   , rand :: StdGen
@@ -27,8 +31,9 @@ data Mundo = Estado {
     canhao :: Pos
   , maxPontos :: Int
   , pontos :: Int
-  , direcaoCanhao :: Direcao
+  , direcaoCanhao :: Movimento
   , naves :: [Nave]
+  , mouse :: Pos
 }
 
 

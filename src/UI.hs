@@ -16,18 +16,19 @@ desenhaMundo m = pictures $ [desenhaMoldura, desenhaMaxPontos, desenhaPontos, de
 
 
 tratarEvento :: Event -> Mundo -> Mundo
-tratarEvento (EventKey (SpecialKey KeyLeft) Down _ _) m = m {direcaoCanhao = Oeste }
-tratarEvento (EventKey (SpecialKey KeyRight) Down _ _) m = m {direcaoCanhao = Leste }
+tratarEvento (EventKey (SpecialKey KeyLeft) Down _ _) m = m {direcaoCanhao = Esquerda }
+tratarEvento (EventKey (SpecialKey KeyRight) Down _ _) m = m {direcaoCanhao = Direita }
 tratarEvento (EventKey (SpecialKey KeyLeft) Up _ _) m = m {direcaoCanhao = Parado }
 tratarEvento (EventKey (SpecialKey KeyRight) Up _ _) m = m {direcaoCanhao = Parado }
+tratarEvento (EventMotion pos) m = m { mouse = pos}
 tratarEvento _ m = m
 
 
 atualizaMundo :: Float -> Mundo -> Mundo
 atualizaMundo _ m = m {canhao = novaPosicao, naves = novasNaves}
-                    where 
+                    where
                         novaPosicao = moverCanhao m
-                        novasNaves = atualizarNaves (naves m)
+                        novasNaves = atualizarNaves (mouse m) (naves m)
 
 
 rectangleThick :: Color -> Float -> Float -> Float -> Picture
@@ -44,3 +45,6 @@ desenhaPontos m = translate 80 (-375) $ color white $ texto (printf "%05d" (pont
 
 desenhaMoldura :: Mundo -> Picture
 desenhaMoldura _ = translate 0 (-350) $ rectangleThick magenta (tamSegmtGrd * 2) 800 100
+
+desenharMouse :: Mundo -> Picture
+desenharMouse m = uncurry translate (mouse m) $ color white $ scale 0.2 0.2 $ text (uncurry (printf "(%.2f, %.2f)") (mouse m))

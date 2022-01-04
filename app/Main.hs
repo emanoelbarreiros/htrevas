@@ -13,6 +13,7 @@ mundoInicial rand = Estado {
   , pontos = 22
   , direcaoCanhao = Parado
   , naves = [Nav (0.0, 0.0) Norte 30 rand [Noroeste, Oeste, Sudoeste, Sul, Sudeste, Leste, Norte]]
+  , mouse = (0.0, 0.0)
 }
 
 main :: IO ()
