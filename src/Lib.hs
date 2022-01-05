@@ -42,6 +42,3 @@ limite (li,ls) v
   | v < li = li
   | v > ls = ls
   | otherwise = v
-
-(|>) :: (a,b) -> c -> (a,b,c)
-(a,b) |> c = (a,b,c)
